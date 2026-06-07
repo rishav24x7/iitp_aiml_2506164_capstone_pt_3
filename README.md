@@ -10,7 +10,7 @@ makes business sense, dig into the model's mistakes on real customers, and write
 ## Repository structure
 
 ```
-d2c-churn-part3-model/
+iitp_aiml_2506164_capstone_pt_3/
 ├── churn_model.ipynb       # Main notebook (run top-to-bottom, outputs included)
 ├── model.pkl               # Generated: fitted pipeline + threshold + feature list
 ├── metrics.json            # Generated: validation/test metrics, threshold, confusion matrix
