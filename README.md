@@ -2,15 +2,15 @@
 
 **D2C Customer Churn Intelligence & Retention** · Capstone Part 3 of 4
 
-This repository builds a model that predicts whether a customer will **churn in the next 60 days**
-(`churn_next_60d` = no purchase in `2025-10-01` → `2025-11-29`). It trains a baseline and a stronger model,
-evaluates them with churn-appropriate metrics, selects a business-justified threshold, analyses errors on real
-customers, and ships a model card.
+This is where I actually build the model that predicts whether a customer will **churn in the next 60 days**
+(`churn_next_60d` = no purchase between `2025-10-01` and `2025-11-29`). I train a simple baseline and a
+stronger model, judge them on metrics that actually suit churn (not just accuracy), pick a threshold that
+makes business sense, dig into the model's mistakes on real customers, and write up a model card.
 
 ## Repository structure
 
 ```
-iitp_aiml_2506164_capstone_pt_3/
+d2c-churn-part3-model/
 ├── churn_model.ipynb       # Main notebook (run top-to-bottom, outputs included)
 ├── model.pkl               # Generated: fitted pipeline + threshold + feature list
 ├── metrics.json            # Generated: validation/test metrics, threshold, confusion matrix
@@ -56,9 +56,10 @@ reports, and the charts. The saved `model.pkl` is consumed directly by the Part 
 | F1 | 0.825 |
 | Accuracy | 0.810 |
 
-Confusion matrix @ threshold 0.349: TN=121, FP=47, FN=17, TP=151. **XGBoost beats the baseline on validation
-ROC-AUC (0.8855 vs 0.8826).** Top drivers: `recency_days`, `last_visit_days_ago`, `category_diversity_180d`,
-`frequency_180d`, `monetary_180d` — disengagement dominates, matching the Part 1 hypotheses.
+At the 0.349 threshold the confusion matrix is TN=121, FP=47, FN=17, TP=151. **XGBoost comes out ahead of the
+baseline on validation ROC-AUC (0.8855 vs 0.8826).** The features doing the heavy lifting are `recency_days`,
+`last_visit_days_ago`, `category_diversity_180d`, `frequency_180d` and `monetary_180d` — so disengagement
+dominates here too, which is exactly what the Part 1 EDA predicted.
 
-See `model_card.md` for intended use, limitations, ethics, and monitoring, and `error_analysis.md` for the
-false-positive / false-negative breakdown with real customer IDs.
+For the full picture, `model_card.md` covers intended use, limitations, ethics and monitoring, and
+`error_analysis.md` walks through the false positives and negatives with real customer IDs.
