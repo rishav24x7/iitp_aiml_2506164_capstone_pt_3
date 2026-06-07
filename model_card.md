@@ -1,8 +1,8 @@
-# Model Card — D2C 60-Day Churn Predictor
+# Model Card â€” D2C 60-Day Churn Predictor
 
 ## Intended use
 Rank active customers by their probability of **not purchasing in the next 60 days** so the retention team can
-prioritise outreach. Decision-support only — it informs *who* to contact, not an automated action. Audience:
+prioritise outreach. Decision-support only â€” it informs *who* to contact, not an automated action. Audience:
 product, marketing, and CRM leadership.
 
 ## Data
@@ -36,15 +36,15 @@ negative_ticket_rate_90d. Disengagement and narrow purchase breadth dominate; di
 ## Limitations
 - Trained on a single 2025-09-30 snapshot; seasonality and trend shifts are not captured.
 - Misses churners whose drivers are outside the data (competitor offers, delivery experience, unlogged
-  dissatisfaction) — see `error_analysis.md` false negatives.
+  dissatisfaction) â€” see `error_analysis.md` false negatives.
 - Probabilities are **relative risk scores**, not calibrated long-run frequencies; calibrate before any
-  expected-value/£-budget automation.
+  expected-value/â€”-budget automation.
 - Small test set (n=336); treat third-decimal metric differences as noise.
 
 ## Ethical risks
 - **Self-fulfilling neglect:** if low scorers are systematically ignored, the brand may abandon recoverable
   customers. Keep a low-cost baseline touch for everyone.
-- **Fairness:** demographic fields (age_group, city_tier) are inputs — monitor that outreach/offers do not
+- **Fairness:** demographic fields (age_group, city_tier) are inputs â€” monitor that outreach/offers do not
   systematically disadvantage a protected group. Prefer behaviour-driven actions.
 - **Do not** use churn scores to degrade service (e.g., deprioritise support for "likely-to-leave" customers).
 
@@ -57,6 +57,6 @@ negative_ticket_rate_90d. Disengagement and narrow purchase breadth dominate; di
   pricing, catalogue, or the loyalty programme.
 
 ## When NOT to use
-- For brand-new customers with almost no history (cold start — use onboarding heuristics instead).
+- For brand-new customers with almost no history (cold start â€” use onboarding heuristics instead).
 - As an automated cancel/deny mechanism, or as the sole basis for any customer-facing decision.
 - Outside the D2C personal-care context it was trained on.
