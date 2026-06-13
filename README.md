@@ -49,15 +49,15 @@ reports, and the charts. The saved `model.pkl` is consumed directly by the Part 
 
 | Metric | XGBoost |
 |---|---|
-| ROC-AUC | 0.871 |
-| PR-AUC | 0.835 |
-| Precision | 0.763 |
-| Recall | 0.899 |
-| F1 | 0.825 |
-| Accuracy | 0.810 |
+| ROC-AUC | 0.8755 |
+| PR-AUC | 0.8392 |
+| Precision | 0.7463 |
+| Recall | 0.9107 |
+| F1 | 0.8204 |
+| Accuracy | 0.8006 |
 
-At the 0.349 threshold the confusion matrix is TN=121, FP=47, FN=17, TP=151. **XGBoost comes out ahead of the
-baseline on validation ROC-AUC (0.8855 vs 0.8826).** The features doing the heavy lifting are `recency_days`,
+At the 0.3304 threshold the confusion matrix is TN=116, FP=52, FN=15, TP=153. **XGBoost comes out ahead of the
+baseline on validation ROC-AUC (0.8832 vs 0.8826).** The features doing the heavy lifting are `recency_days`,
 `last_visit_days_ago`, `category_diversity_180d`, `frequency_180d` and `monetary_180d` — so disengagement
 dominates here too, which is exactly what the Part 1 EDA predicted.
 
